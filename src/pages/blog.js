@@ -1,11 +1,16 @@
-import React from "react"
+import React, { Component } from "react"
+import Layout from "../layouts/MainLayout"
 
-const BlogPage = () => {
-    return (
-        <div>
-            <h1>Latest Blog Posts</h1>
-        </div>
-    )
+
+
+class BlogPage extends Component {
+    render() {
+        return (
+            <Layout>
+                <h1>Latest Blog Posts</h1>
+            </Layout>
+        )
+    }
 }
 
 export default BlogPage

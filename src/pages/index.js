@@ -1,14 +1,15 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { Component } from "react"
+import Layout from "../layouts/MainLayout"
 
-const HomePage = () => {
-    return (
-        <div>
-            <h1>Jean Carlo Hilger</h1>
-            <h2>Bio comes here</h2>
-            <Link to="/blog">Blog</Link>
-        </div>
-    )
+
+class HomePage extends Component {
+    render()  {
+        return (
+            <Layout>
+                <h2>Bio comes here</h2>
+            </Layout>
+        )
+    }
 }
 
 export default HomePage;
