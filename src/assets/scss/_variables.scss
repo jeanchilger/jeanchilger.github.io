@@ -1,0 +1,50 @@
+/* COLORS */
+$indigo: rgb(114, 121, 218);
+$blue: rgb(94, 162, 201);
+$purple: rgb(149, 116, 192);
+$green: rgb(96, 185, 118);
+$red: rgb(240, 110, 110);
+$orange: rgb(252, 147, 98);
+$yellow: rgb(252, 209, 92);
+$white: rgb(232, 238, 241);
+
+$colors: (
+    'indigo': $indigo,
+    'blue': $blue,
+    'purple': $purple,
+    'green': $green,
+    'red': $red,
+    'orange': $orange,
+    'yellow': $yellow,
+);
+
+$grey-100: rgb(219, 226, 230);
+$grey-200: rgb(189, 198, 204);
+$grey-300: rgb(166, 176, 182);
+$grey-400: rgb(108, 116, 122);
+$grey-500: rgb(73, 81, 90);
+$grey-600: rgb(42, 47, 54);
+$grey-700: rgb(30, 33, 37);
+$grey-800: rgb(24, 29, 32);
+$grey-900: rgb(18, 23, 27);
+
+$greys: (
+    '100': $grey-100,
+    '200': $grey-200,
+    '300': $grey-300,
+    '400': $grey-400,
+    '500': $grey-500,
+    '600': $grey-600,
+    '700': $grey-700,
+    '800': $grey-800,
+    '900': $grey-900,
+);
+
+$theme-colors: (
+    'primary': $indigo,
+    'secondary': $green,
+    'dark': $grey-900,
+    'light': $grey-100,
+);
+
+/* SHADOWS */

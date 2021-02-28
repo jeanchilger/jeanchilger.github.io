@@ -1,0 +1,50 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/functions';
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: theme('light');
+
+    &__title {
+        background-image: linear-gradient(
+            45deg,
+            color('green'),
+            color('blue'),
+            color('indigo'),
+            color('purple'),
+            color('red'),
+            color('orange'),
+            color('yellow'),
+        );
+        background-size: 400%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+
+        font-size: 5rem;
+        font-weight: 900;
+        text-shadow: 0 7px 35px rgba(255, 255, 255, 0.25),
+            1px 4px 20px rgba(190, 190, 190, 0.08);
+        letter-spacing: .2rem;
+        animation: title-background-position 20s linear infinite alternate;
+    }
+
+    &__subtitle {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+}
+
+@keyframes title-background-position {
+    0% {
+        backgroud-position: left;
+    }
+
+    100% {
+        background-position: right;
+    }
+}

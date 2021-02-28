@@ -1,0 +1,11 @@
+@function theme($key) {
+    @return map-get($theme-colors, $key);
+}
+
+@function color($key) {
+    @return map-get($colors, $key);
+}
+
+@function grey($key) {
+    @return map-get($greys, $key);
+}

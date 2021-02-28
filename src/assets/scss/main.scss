@@ -1,1 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2\
+?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'bootstrap/scss/bootstrap-grid.scss';
+@import 'utils/typography.scss';
+@import 'variables';
+@import 'functions';
+
+* {
+    font-family: Lato;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}

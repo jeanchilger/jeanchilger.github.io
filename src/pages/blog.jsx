@@ -4,7 +4,9 @@ import Layout from '../layouts/BlogLayout';
 function BlogPage() {
     return (
         <Layout>
-            <h1>Latest Blog Posts</h1>
+            <div className="container">
+                <h1 className="title title--primary">Latest Blog Posts</h1>
+            </div>
         </Layout>
     );
 }

@@ -1,3 +1,45 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/functions';
+
+
 .footer {
-    background-color: red;
+    display: flex;
+    align-items: center;
+    height: 70vh;
+
+    &__link {
+        font-size: 2rem;
+
+        &:hover {
+            color: theme('light');
+        }
+    }
+}
+
+.footer__svg {
+    position: absolute;
+    width: 100%;
+    bottom: 0vh;
+    height: 30vh;
+    transform: scale(1, -1);
+    
+    path {
+        animation: line-animation 15s linear infinite alternate;
+        fill: grey('700');
+    }
+}
+
+
+@keyframes line-animation {
+    0% {
+        d: path("M 0 100 Q 250 50 400 200 Q 550 350 800 300 L 800 0 L 0 0 L 0 100 Z");
+    }
+
+    50% {
+        d: path("M 0 100 Q 200 150 400 200 Q 600 250 800 300 L 800 0 L 0 0 L 0 100 Z");
+    }
+
+    100% {
+        d: path("M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z");
+    }
 }
