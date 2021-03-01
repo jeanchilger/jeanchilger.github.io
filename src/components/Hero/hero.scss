@@ -39,6 +39,21 @@
     }
 }
 
+.hero__corner-waves {
+    top: 0;
+    right: 0;
+    position: absolute;
+    
+    .top-wave {
+        animation: top-wave-bounce 15s ease infinite alternate;
+    }
+
+    .bottom-wave {
+        animation: bottom-wave-bounce 15s ease infinite alternate;
+    }
+}
+
+/* Name gradient */
 @keyframes title-background-position {
     0% {
         backgroud-position: left;
@@ -46,5 +61,27 @@
 
     100% {
         background-position: right;
+    }
+}
+
+/* Corner solid wave */
+@keyframes top-wave-bounce {
+    0% {
+        d: path("M342 0H24C24 0 6.49999 36 42.5 73C78.5 110 117 86 147 108C177 130 162.516 163.752 191 186.5C220.047 209.698 239.14 187.764 275.5 195.5C306.296 202.052 342 229 342 229V0Z");
+    }
+
+    100% {
+        d: path("M353 0H31C31 0 0.50001 62 51.5 80.5C102.5 99 124.462 84.5 136 119.5C147.538 154.5 165 181 202 186.5C238.77 191.966 263.158 176.584 296 194C329 211.5 353 229 353 229V0Z");
+    }
+}
+
+/* Corner fadded wave */
+@keyframes bottom-wave-bounce {
+    0% {
+        d: path("M342 0H1.63302C1.63302 0 -4.07346 46.6783 7 74.5C19.7488 106.531 32.8548 111.246 67 116C106.5 121.5 112.5 112.687 141 136C173.022 162.194 144.834 179.271 178 204C209.947 227.82 228.584 207.423 267.5 216C300.913 223.364 342 260 342 260V0Z");
+    }
+
+    100% {
+        d: path("M352.837 0H12.47C12.47 0 -7.57346 48.1783 3.5 76C16.2488 108.031 45.0253 126 79.5 126C121 126 139.553 126 153 137C185.022 163.194 162 188.5 188.5 208.5C215 228.5 247.084 207.423 286 216C319.413 223.364 352.837 260 352.837 260V0Z");
     }
 }
