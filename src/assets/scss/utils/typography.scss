@@ -10,7 +10,6 @@ $link-bottom-pad: .2rem;
     text-shadow: 0 4px 25px rgba(255, 255, 255, 0.15);
     font-size: 3rem;
     font-weight: 700;
-    animation: up-down 2.5s ease infinite alternate;
 }
 
 .subtitle {
@@ -79,15 +78,5 @@ $link-bottom-pad: .2rem;
     .link.link--#{$color}:hover:before {
         top: 0;
         color: white;
-    }
-}
-
-@keyframes up-down {
-    0% {
-        transform: translateY(-20px);
-    }
-
-    100% {
-        transform: translateY(0px);
     }
 }

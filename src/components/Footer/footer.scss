@@ -3,24 +3,37 @@
 
 
 .footer {
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
-    height: 70vh;
+
+    &__bottom-area {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 25vh;
+        z-index: 1;
+    }
 
     &__link {
-        font-size: 2rem;
+        display: inline-block;
+        font-size: 1.4rem;
+        animation: up-down-link 5s ease infinite alternate;
 
-        &:hover {
-            color: theme('light');
-        }
     }
 }
 
 .footer__svg {
     position: absolute;
     width: 100%;
-    bottom: 0vh;
-    height: 30vh;
+    bottom: 0;
+    height: 50vh;
     transform: scale(1, -1);
     
     path {
@@ -41,5 +54,16 @@
 
     100% {
         d: path("M 0 100 Q 150 350 400 200 Q 650 50 800 300 L 800 0 L 0 0 L 0 100 Z");
+    }
+}
+
+@keyframes up-down-link {
+    0% {
+        transform: translateY(-10px);
+
+    }
+
+    100% {
+        transform: translateY(0);
     }
 }

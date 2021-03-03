@@ -12,13 +12,20 @@ function Footer(props) {
             speed={0.3}
         >
             <div>
-                <div className="container footer">
-                    <a
-                        href="https://github.com/jeanchilger"
-                        className="link link--primary footer__link"
-                    >
-                        Follow me on Gihub!!
-                    </a>
+                <div className="footer">
+                    <div className="container">
+                        <div className="footer__bottom-area">
+                            <div className="container">
+                                <a
+                                    href="https://github.com/jeanchilger"
+                                    className="link link--primary link--gradient footer__link"
+                                    target="blank"
+                                >
+                                    Follow me on Gihub!!
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <svg
