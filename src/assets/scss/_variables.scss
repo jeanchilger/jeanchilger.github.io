@@ -47,4 +47,21 @@ $theme-colors: (
     'light': $grey-100,
 );
 
+$gradients: (
+    'indigo': ($indigo, $green),
+    'blue': ($blue, $green),
+    'purple': ($purple, $red),
+    'green': ($green, $yellow),
+    'red': ($red, $yellow),
+    'orange': ($orange, $green),
+    'yellow': ($yellow, $purple),
+);
+
+$theme-gradients: (
+    'primary': ($indigo, $green),
+    'secondary': ($green, $yellow),
+    'dark': ($grey-900, $grey-800),
+    'light': ($grey-100, $grey-200),
+);
+
 /* SHADOWS */

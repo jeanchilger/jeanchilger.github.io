@@ -33,7 +33,7 @@ function HeroSection(props) {
                         >
                             <stop
                                 offset="0%"
-                                stop-color="lightblue"
+                                stopColor="lightblue"
                             >
                                 <animate
                                     attributeName="stop-color"
@@ -53,12 +53,6 @@ function HeroSection(props) {
                                     dur="40s"
                                     repeatCount="indefinite"
                                 />
-                                {/* <animate
-                                    attributeName="offset"
-                                    values=".95;.80;.60;.40;.20;0;.20;.40;.60;.80;.95"
-                                    dur="14s"
-                                    repeatCount="indefinite"
-                                /> */}
                             </stop>
                         </linearGradient>
                     </defs>
