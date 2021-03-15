@@ -58,7 +58,7 @@ function Footer(props) {
                                 L 0 0
                                 L 0 100 Z"
                             repeatCount="indefinite"
-                            dur="30s"
+                            dur="40s"
                         />
                     </path>
                 </svg>

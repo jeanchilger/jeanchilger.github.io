@@ -8,6 +8,7 @@ function HeroSection(props) {
         subtitle,
         offset,
         factor,
+        children
     } = props;
 
     return (
@@ -89,6 +90,15 @@ function HeroSection(props) {
                         <h4 className="hero__subtitle">
                             {subtitle}
                         </h4>
+
+                        <div className="hero__buttons p-1">
+                            {children.map((node) => (
+                                <div className="p-1 d-inline-block">
+                                    {node}
+                                </div>
+                            ))}
+                        </div>
+
                     </ParallaxLayer>
                 </div>
             </div>

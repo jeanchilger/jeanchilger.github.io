@@ -2,8 +2,8 @@
 @import '../../assets/scss/functions';
 
 .divider {
-    background-image: linear-gradient(to right, color('blue'), color('orange'));
+    background-image: gradient('primary');
     clip-path: polygon(0 15%, 100% 25%, 100% 85%, 0 75%);
     width: 100%;
-    height: 120vh;
+    height: 150vh;
 }
