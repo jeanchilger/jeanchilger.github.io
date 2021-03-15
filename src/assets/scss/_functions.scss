@@ -23,6 +23,30 @@
  *
  */
 @function gradient($key, $direction: 45deg) {
-    @debug map-get($theme-gradients, $key);
     @return linear-gradient($direction, map-get($theme-gradients, $key));
+}
+
+
+/**
+ *  adpted from 
+ * https://medium.com/@jonnykates/automating-colour-contrast-ratios-with-sass-e201f3b52797
+ */
+
+@function text-contrast($color) {
+    $color-brightness: round(
+        (red($color) * 299) + 
+        (green($color) * 587) + 
+        (blue($color) * 114) / 1000);
+
+    $light-color: round(
+        (red(theme('light')) * 299) + 
+        (green(theme('light')) * 587) + 
+        (blue(theme('light')) * 114) / 1000);
+
+    @if abs($color-brightness) < ($light-color/2){
+        @return theme('light');
+    }
+    @else {
+        @return theme('dark');
+    }
 }
