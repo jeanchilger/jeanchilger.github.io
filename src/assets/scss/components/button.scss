@@ -1,0 +1,87 @@
+@import '../variables';
+@import '../functions';
+
+/* Button specific variables */
+$btn-border-radius: 4px;
+$btn-padding: 0.6rem 2rem;
+
+
+a.btn {
+    text-decoration: none;
+    color: white;
+}
+
+button.btn {
+    border: none;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    padding: $btn-padding;
+    border-radius: $btn-border-radius;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: all .2s ease;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0,  14%),
+                0 1px 10px 0 rgba(0, 0, 0,  12%),
+                0 2px 4px -1px rgba(0, 0, 0,  30%),
+                0 4px 10px rgba(255, 255, 255, 5%);
+    cursor: pointer;
+}
+
+@each $color, $value in $theme-colors {
+    .btn.btn--#{$color} {
+        background-color: $value;
+        color: text-contrast($value);
+
+        &:hover {
+            background-color: darken($value, 5%);
+        }
+    }
+
+    .btn.btn--#{$color}.btn--gradient {
+        background-image: gradient($color);
+        color: text-contrast($value);
+    }
+
+    .btn.btn--#{$color}.btn--outline {
+        background-color: transparent;
+        color: $value;
+        border: 2px solid $value;
+
+        &:hover {
+            background-color: $value;
+            color: text-contrast($value);
+            // color: theme('dark');
+        }
+    }
+}
+
+.btn--link {
+    position: relative;
+    &::after {
+        content: ">";
+        font-size: 1rem;
+        font-weight: 900;
+        position: absolute;
+        left: 80%;
+        top: 50%;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+
+        &::after {
+            opacity: 1;
+            transition: all 0.5s;
+            padding-left: 2%;
+            
+            color: #ffffff;
+        }
+    }
+
+}

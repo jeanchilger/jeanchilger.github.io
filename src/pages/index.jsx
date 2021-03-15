@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Layout from '../layouts/MainLayout';
 import Hero from '../components/Hero';
 import Contact from '../components/Contact';
@@ -13,7 +14,15 @@ function HomePage() {
                 subtitle="Computer Science Student"
                 offset={0}
                 factor={1}
-            />
+            >
+                <Link to="/blog" className="btn btn--secondary btn--outline">
+                    Blog
+                </Link>
+
+                <Link to="/publications" className="btn btn--secondary btn--outline">
+                    Publications
+                </Link>
+            </Hero>
 
             <Divider
                 offset={0.9}
