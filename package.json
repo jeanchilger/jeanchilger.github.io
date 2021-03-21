@@ -1,8 +1,9 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "jeanchilger.github.io",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Jean Carlo Hilger's website.",
   "version": "0.1.0",
+  "author": "Jean Carlo Hilger <hilgerjeancarlo@gmail.com>",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
@@ -16,7 +17,9 @@
   "dependencies": {
     "bootstrap": "^5.0.0-beta2",
     "gatsby": "^2.26.1",
+    "gatsby-plugin-mdx": "^2.1.0",
     "gatsby-plugin-sass": "^3.2.0",
+    "gatsby-source-filesystem": "^2.11.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
