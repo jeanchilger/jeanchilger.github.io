@@ -1,45 +1,36 @@
 {
   "name": "jeanchilger.github.io",
+  "version": "1.0.0",
   "private": true,
-  "description": "Jean Carlo Hilger's website.",
-  "version": "0.1.0",
-  "author": "Jean Carlo Hilger <hilgerjeancarlo@gmail.com>",
-  "license": "0BSD",
+  "description": "jeanchilger.github.io",
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
-    "build": "gatsby build",
+    "dev": "npm run develop",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta2",
-    "gatsby": "^2.26.1",
-    "gatsby-plugin-mdx": "^2.1.0",
-    "gatsby-plugin-sass": "^3.2.0",
-    "gatsby-source-filesystem": "^2.11.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0",
-    "react-spring": "^8.0.27",
-    "sass": "^1.32.7"
+    "gatsby": "^5.14.1",
+    "gatsby-plugin-manifest": "^5.14.0",
+    "gatsby-plugin-sass": "^6.14.0",
+    "gatsby-plugin-sitemap": "^6.14.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sass": "^1.85.0"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "prettier": "2.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "@eslint/js": "^9.20.0",
+    "@types/node": "^20.11.19",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "eslint": "^9.20.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1"
   }
 }
