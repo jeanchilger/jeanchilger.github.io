@@ -1,0 +1,10 @@
+@import '~bootstrap/scss/bootstrap';
+
+:root {
+  --color-light: #f8f9fa;
+}
+
+body {
+  background-color: #1a1b20;
+  color: var(--color-light);
+}
