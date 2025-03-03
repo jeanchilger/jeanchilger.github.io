@@ -1,10 +1,11 @@
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
 
 :root {
-  --color-light: #f8f9fa;
+  --color-light: #fffbf2;
 }
 
 body {
-  background-color: #1a1b20;
+  background-color: #21232D;
   color: var(--color-light);
 }
