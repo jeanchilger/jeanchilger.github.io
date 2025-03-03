@@ -15,9 +15,10 @@ const FullPageSection = styled.div`
 `;
 
 const HeroTitle = styled.h1`
+  color: #d8dee9;
   font-size: 5rem;
   font-weight: bold;
-  text-shadow: 1px 0 10px #959fd34a;
+  text-shadow: 1px 0 10px #d8dee94a;
 `;
 
 const GoDownButton = styled.button`
