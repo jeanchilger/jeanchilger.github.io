@@ -1,6 +1,7 @@
 import { HeadFC, PageProps } from 'gatsby';
 import * as React from 'react';
 import styled from 'styled-components';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
 
 const CenteredContentContainer = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const CenteredContentContainer = styled.div`
   align-items: center;
 `;
 
-const IndexPageContainer = styled.div`
+const FullPageSection = styled.div`
   width: 100%;
   min-height: 100vh;
 `;
@@ -52,19 +53,33 @@ const GoDownButton = styled.button`
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <IndexPageContainer className='row'>
-      <CenteredContentContainer className='col-12 col-md-6'>
-        <HeroTitle>Jean Carlo Hilger</HeroTitle>
-      </CenteredContentContainer>
-      
-      <CenteredContentContainer className='col-md-6 d-none d-md-flex'>
-        <h1>THIS IS THE ANIMATION</h1>
-      </CenteredContentContainer>
+    <Parallax pages={2}>
+      <ParallaxLayer offset={0} speed={1}>
+        <FullPageSection>
+          <ParallaxLayer offset={0} speed={1.2} className='row'>
+            <CenteredContentContainer className='col-12 col-md-6'>
+              <HeroTitle>Jean Carlo Hilger</HeroTitle>
+            </CenteredContentContainer>
+            
+            <CenteredContentContainer className='col-md-6 d-none d-md-flex'>
+              <h1>THIS IS THE ANIMATION</h1>
+            </CenteredContentContainer>
+          </ParallaxLayer>
 
-      <GoDownButton>
-        <i className='bi bi-chevron-down'></i>
-      </GoDownButton>
-    </IndexPageContainer>
+          <GoDownButton>
+            <i className='bi bi-chevron-down'></i>
+          </GoDownButton>
+        </FullPageSection>
+      </ParallaxLayer>
+
+      <ParallaxLayer offset={1} speed={1}>
+        <FullPageSection className='row'>
+          <CenteredContentContainer className='col-12'>
+            <h1>Section 2</h1>
+          </CenteredContentContainer>
+        </FullPageSection>
+      </ParallaxLayer>
+    </Parallax>
   );
 };
 

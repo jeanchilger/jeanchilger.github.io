@@ -23,12 +23,12 @@ const theme = {
 const Layout: React.FC<PageProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <LayoutContainer className='container-fluid'>
-        <div className="row">
-          <div className="col-12 col-md-8 offset-md-2">
+      <LayoutContainer>
             {children}
+        {/* <div className="row">
+          <div className="col-12 col-md-8 offset-md-2">
           </div>
-        </div>
+        </div> */}
       </LayoutContainer>
     </ThemeProvider>
   );
