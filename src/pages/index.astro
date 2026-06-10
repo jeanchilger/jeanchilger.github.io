@@ -1,6 +1,16 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from '@/layouts/MainLayout.astro';
+import Nav from '@/components/Nav.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Career from '@/components/sections/Career.astro';
+import Blog from '@/components/sections/Blog.astro';
+import Contact from '@/components/sections/Contact.astro';
 ---
 
 <MainLayout title="Jean Carlo Hilger">
+    <Hero />
+    <Nav />
+    <Career />
+    <Blog />
+    <Contact />
 </MainLayout>

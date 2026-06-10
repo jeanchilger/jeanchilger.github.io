@@ -1,0 +1,31 @@
+---
+
+---
+
+<nav
+    id="nav"
+    class="bg-background/50 backdrop-blur-md fixed top-0 left-0 right-0 -translate-y-full transition-transform duration-300 ease-out"
+>
+    <div
+        class="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-4 p-4"
+    >
+        <span></span>
+        <div>
+            <a href="#career">Career</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    window.addEventListener("scroll", () => {
+        const nav = document.getElementById("nav");
+
+        if (window.scrollY > window.innerHeight * 0.8) {
+            nav?.classList.remove("-translate-y-full");
+        } else {
+            nav?.classList.add("-translate-y-full");
+        }
+    });
+</script>
