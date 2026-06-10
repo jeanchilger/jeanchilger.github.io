@@ -1,5 +1,6 @@
 ---
-import Button from '@/components/ui/Button.astro';
+import Link from '@/components/ui/Link.astro';
+import Button from '../ui/Button.astro';
 ---
 
 <section class="relative h-screen flex flex-col items-center justify-center">
@@ -13,13 +14,13 @@ import Button from '@/components/ui/Button.astro';
         </p>
 
         <div class="mt-6">
-            <Button variant='primary' class="reveal-content" style="animation-delay: 250ms;">
+            <Link href="/blog" variant='primary' class="reveal-content me-2" style="animation-delay: 250ms;">
                 Blog
-            </Button>
+            </Link>
 
-            <Button variant='primary' outline class="reveal-content" style="animation-delay: 350ms;">
+            <Link href="#career" variant='primary' outline class="reveal-content" style="animation-delay: 350ms;">
                 Career
-            </Button>
+            </Link>
         </div>
     </div>
 

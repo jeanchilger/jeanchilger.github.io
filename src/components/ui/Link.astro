@@ -1,5 +1,6 @@
 ---
 interface Props {
+    href: string;
     variant: 'primary' | 'secondary';
     outline?: boolean;
     class?: string;
@@ -7,6 +8,7 @@ interface Props {
 };
 
 const {
+    href,
     variant,
     outline,
     class: className,
@@ -14,11 +16,11 @@ const {
 } = Astro.props;
 
 const variantStyle = {
-    'primary': 'bg-primary rounded border-glow border border-primary cursor-pointer px-4 py-1 hover:brightness-80 transition',
+    'primary': 'bg-primary rounded border-glow border border-primary cursor-pointer px-4 py-1 hover:brightness-80 transition text-decoration-none',
     'secondary': ''
 }[variant];
 ---
 
-<button class=`${variantStyle} ${outline && 'bg-transparent'} ${className}` {...rest}>
+<a href={href} class=`${variantStyle} ${outline && 'bg-transparent'} ${className}` {...rest}>
     <slot></slot>
-</button>
+</a>

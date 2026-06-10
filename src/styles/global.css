@@ -95,14 +95,6 @@
 
     body {
         @apply font-body antialiased text-maintext;
-        background: linear-gradient(135deg,
-                color-mix(in srgb, var(--color-background), black 20%) 0%,
-                var(--color-background) 50%,
-                color-mix(in srgb, var(--color-background), var(--color-accent) 16%) 100%);
-        background-attachment: fixed;
-        min-height: 100vh;
-        /*Transition for theme switching*/
-        transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
     }
 }
 
@@ -136,15 +128,6 @@
         filter: blur(8px);
         opacity: .7;
     }
-
-
-    /* .noto-serif-text {
-        font-family: "Noto Serif", serif;
-        font-optical-sizing: auto;
-        font-weight: 400;
-        font-style: normal;
-        font-variation-settings: "wdth" 100;
-    } */
 }
 
 /* Custom Scrollbar for a cleaner look */
