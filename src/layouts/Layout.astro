@@ -1,27 +1,31 @@
 ---
-import '../styles/global.css';
+import '@/styles/global.css';
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>Jean Carlo Hilger</title>
 	</head>
-	<body>
-		<slot />
+
+	<body class="flex h-fit min-h-screen flex-col gap-y-6" transition:persist>
+        <div>
+            <slot />
+        </div>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+    html, body {
+        font-family: "Noto Serif", serif;
+        font-optical-sizing: auto;
+    }
 </style>
