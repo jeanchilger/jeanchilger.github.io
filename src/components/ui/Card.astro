@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+    to: string,
+    title: string,
+    description: string,
+}
+
+const { to, title, description } = Astro.props;
+---
+
+<a href={to} class="card bg-primary">
+    <div class="card-title">
+        { title }
+    </div>
+
+    <div class="card-description">
+        { description }
+    </div>
+</a>
