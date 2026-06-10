@@ -1,18 +1,33 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-
 interface Props {
     to: string,
     title: string,
     description: string,
+    subtitle?: Date,
+    class?: string,
 }
 
-const { to, title, description } = Astro.props;
+const {
+    to,
+    title,
+    subtitle,
+    description,
+    class: className,
+    ...rest
+} = Astro.props;
 ---
 
-<a href={to} class="card bg-primary">
-    <div class="card-title">
-        { title }
+<a href={to} class=`card ${className}` { ...rest }>
+    <div class="card-header">
+        <div class="card-title">
+            { title }
+        </div>
+
+        {subtitle &&
+            <div class="card-subtitle text-subtext">
+                { subtitle.toLocaleDateString() }
+            </div>
+        }
     </div>
 
     <div class="card-description">

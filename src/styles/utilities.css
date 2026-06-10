@@ -1,0 +1,16 @@
+@layer utilities {
+    .border-glow {
+        position: relative;
+    }
+
+    .border-glow::before {
+        pointer-events: none;
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        border: inherit;
+        filter: blur(8px);
+        opacity: .7;
+    }
+}

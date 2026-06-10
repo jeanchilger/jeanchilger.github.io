@@ -15,7 +15,8 @@ const posts = await getCollection('blog');
                         to=`/${post.collection}/${post.id}`
                         title={post.data.title}
                         description={post.data.description}
-                        date={post.data.createdAt}
+                        subtitle={post.data.date}
+                        class="dark gradient border-glow"
                     ></Card>
                 </li>
             ))}
