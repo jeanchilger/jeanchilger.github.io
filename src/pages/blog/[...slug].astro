@@ -1,34 +1,30 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+async function fetchAllPosts(): Promise<CollectionEntry<'blog'>[]> {
+    return await getCollection('blog');
+}
 
 export async function getStaticPaths() {
-    const pages = [
-        {
-            title: '1 - Lorem ipsum dolor sit amet, qui minim labore adipisicing',
-            description: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
-            slug: 'lipsum-1'
-        },
-        {
-            title: '2 - Lorem ipsum dolor sit amet, qui minim labore adipisicing',
-            description: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
-            slug: 'lipsum-2'
-        },
-        {
-            title: '3 - Lorem ipsum dolor sit amet, qui minim labore adipisicing',
-            description: 'Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis.',
-            slug: 'lipsum-3'
-        }
-    ];
+    const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
 
-    return pages.map(page => ({
-        params: {slug: page.slug},
-        props: {...page}
+    return posts.map(post => ({
+        params: {slug: post.id},
+        props: post
     }));
 }
 
-const { title, description } = Astro.props;
+const post = Astro.props;
 ---
 
-<BlogLayout title={title}>
-    <h1>{title}</h1>
+<BlogLayout title={post.data.title}>
+    <div class="p-8">
+        <h1 class="text-4xl">
+            {post.data.title}
+        </h1>
+        <p class="mt-4">
+            {post.data.description}
+        </p>
+    </div>
 </BlogLayout>

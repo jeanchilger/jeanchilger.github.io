@@ -1,7 +1,19 @@
 ---
+import BlogPostCard from '@/components/BlogPostCard.astro';
 import BlogLayout from '@/layouts/BlogLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
 ---
 
 <BlogLayout title="Jean Carlo Hilger">
-
+    <section class="flex items-center p-6">
+        <ul class="flex flex-col gap-4 w-full">
+            {posts.map(post =>(
+                <li class="flex-1">
+                    <BlogPostCard entry={post}></BlogPostCard>
+                </li>
+            ))}
+        </ul>
+    </section>
 </BlogLayout>
