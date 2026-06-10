@@ -1,20 +1,44 @@
 ---
-
+import Button from '@/components/ui/Button.astro';
 ---
 
-<section class="px-2 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto h-screen flex flex-col items-center justify-center">
-    <h1 class="text-5xl font-bold">Jean Carlo Hilger</h1>
+<section class="relative h-screen flex flex-col items-center justify-center">
+    <div class="min-h-50 w-3xl rounded border-glow border border-gray-600 backdrop-blur-xs bg-linear-to-tl from-black/50 to-dark/50 flex flex-col p-8">
+        <h1 class="text-6xl font-bold text-primary reveal-content" style="animation-delay: 100ms;">
+            Jean Carlo Hilger
+        </h1>
 
-    <div class="mt-auto mb-8">
-        <a
-            href="#about"
-            class="flex flex-col items-center gap-2 animate-bounce"
-        >
-            <span>↓</span>
-        </a>
+        <p class="mt-6 text-xl reveal-content" style="animation-delay: 200ms;">
+            Engineer committed to developing efficient, scalable, and user-focused software solutions.
+        </p>
+
+        <div class="mt-6">
+            <Button variant='primary' class="reveal-content" style="animation-delay: 250ms;">
+                Blog
+            </Button>
+
+            <Button variant='primary' outline class="reveal-content" style="animation-delay: 350ms;">
+                Career
+            </Button>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        ↓
     </div>
 </section>
 
 <style>
+.reveal-content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
 
+@keyframes revealIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>

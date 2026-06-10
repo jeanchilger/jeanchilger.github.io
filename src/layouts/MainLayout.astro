@@ -25,6 +25,11 @@ const { title } = Astro.props;
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
         <title>{title}</title>
 
         <!-- THEME TOGGLE SCRIPT -->
@@ -109,12 +114,11 @@ const { title } = Astro.props;
             const characters = "{}[]()<>/\=+*01$#;";
             // const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@&%";
             const colors = [
-                "#FF4500",
-                "#32CD32",
-                "#1E90FF",
-                "#FFD700",
-                "#8A2BE2",
-                "#FF1493",
+                '#bf616a',
+                '#a3be8c',
+                '#88c0d0',
+                '#ebcb8b',
+                '#b48ead',
             ];
 
             function createLetter() {
@@ -122,8 +126,8 @@ const { title } = Astro.props;
 
                 const span = document.createElement("span");
                 const char = characters[Math.floor(Math.random() * characters.length)];
-                // const color = colors[Math.floor(Math.random() * colors.length)];
-                const color = "var(--color-textrain)";
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                // const color = "var(--color-textrain)";
 
                 const left = Math.random() * 100;
                 const duration = 4 + Math.random() * 8; // 4s to 10s
@@ -200,8 +204,8 @@ const { title } = Astro.props;
                     progressCircle.style.strokeDashoffset = offset.toString();
                 }
 
-                // Visibility Logic (Appear at 50%)
-                if (scrollPercentage > 0.5) {
+                // Visibility Logic (Appear at 30%)
+                if (scrollPercentage > 0.3) {
                     toTopBtn?.classList.remove("translate-y-20", "opacity-0");
                     toTopBtn?.classList.add("translate-y-0", "opacity-100");
                 } else {

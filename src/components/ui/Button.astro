@@ -1,0 +1,28 @@
+---
+import type { $brand, $input } from 'astro:schema';
+
+
+interface Props {
+    variant: 'primary' | 'secondary';
+    outline?: boolean;
+    class?: string;
+    style?: string;
+};
+
+const {
+    variant,
+    outline,
+    class: className,
+    ...rest
+} = Astro.props;
+
+const variantStyle = {
+    'primary': 'bg-primary rounded border-glow border border-primary cursor-pointer px-4 py-1 hover:brightness-80 transition',
+    'secondary': ''
+}[variant];
+
+---
+
+<button class=`btn ${variantStyle} ${outline && 'bg-transparent'} ${className}` {...rest}>
+    <slot></slot>
+</button>
