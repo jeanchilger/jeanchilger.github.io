@@ -1,33 +1,206 @@
 ---
+import { getCollection } from 'astro:content';
+import Card from '../ui/Card.astro';
 
+
+const careerData = await getCollection('career');
+
+function formatDate(date: Date) {
+    return date.toLocaleDateString('default', {
+        month: 'short',
+        year: 'numeric',
+    }).toLocaleUpperCase();
+}
 ---
 
 <section id="career" class="scroll-mt-20 px-2 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen">
-    <div>
-        <h1 class="text-5xl reveal-content" style="animation-delay: 100ms;">
+    <div class="mb-10">
+        <h1 class="text-5xl scroll-stat">
             Career
         </h1>
-        <span class="text-md text-subtext reveal-content" style="animation-delay: 200ms;">
+        <span class="text-md text-subtext scroll-stat" style="animation-delay: 200ms;">
             A brief overview of my career
         </span>
     </div>
 
-    <div class="timeline">
+    <div class="timeline relative">
+        <!-- vertical line -->
+        <div class="absolute left-2 md:left-1/2 md:-translate-x-1/2 top-5 bottom-0 w-0.5 bg-linear-to-b from-accent via-white/10 to-transparent">
+        </div>
 
+        <!-- mobile layout -->
+        <div class="md:hidden"></div>
+
+        <!-- desktop layout -->
+        <div class="hidden md:block space-y-4">
+            {careerData.map((item, index) => (
+                <div class="scroll-stat relative grid grid-cols-2">
+                    {/* center dot */}
+                    <div class="absolute left-1/2 -translate-x-1/2 top-1 z-10">
+                        <div class={`w-4 h-4 rounded-full border-4 border-[#0a0a0a]
+                                    ${index === 0 ? 'bg-accent shadow-[0_0_15px_var(--color-accent)] animate-pulse' : 'bg-accent/50'}`}>
+                        </div>
+                    </div>
+
+                    {/* Left Side (even items) */}
+                    <div class="md:px-6 md:py-0">
+                        {index % 2 === 0 ? (
+                            <Card class="outlined border-glow text-end" divider>
+                                <Fragment slot={'header'}>
+                                    <div>
+                                        <span class="text-sm text-gray-500">
+                                            { item.data.company }
+                                        </span>
+
+                                        <div class="card-title">
+                                            { item.data.role }
+                                        </div>
+                                    </div>
+
+                                    <div class="card-subtitle text-subtext text-xs">
+                                        { formatDate(item.data.startDate) } - { formatDate(item.data.endDate) }
+                                    </div>
+                                </Fragment>
+
+                                <Fragment slot={'content'}>
+                                    <div class="flex flex-col gap-2">
+
+                                        <div class="card-content">
+                                            { item.data.summary }
+                                        </div>
+
+                                        <div class="flex flex-wrap justify-end gap-1">
+                                            {item.data.skills.slice(0, 5).map(skill => (
+                                                <span class="badge badge-primary">
+                                                    { skill }
+                                                </span>
+                                            ))}
+
+                                            {item.data.skills.length > 5 &&
+                                                <span class="badge badge-primary">
+                                                    +{ item.data.skills.length - 5 }
+                                                </span>
+                                            }
+                                        </div>
+                                    </div>
+                                </Fragment>
+                            </Card>
+                        ) : <div class="h-full pointer-events-none"></div>}
+                    </div>
+
+                    {/* Right Side (odd items) */}
+                    <div class="md:px-6 md:py-0">
+                        {index % 2 !== 0 ? (
+                            <Card class="outlined border-glow" divider>
+                                <Fragment slot={'header'}>
+                                    <div>
+                                        <span class="text-sm text-gray-500">
+                                            { item.data.company }
+                                        </span>
+
+                                        <div class="card-title">
+                                            { item.data.role }
+                                        </div>
+                                    </div>
+
+                                    <div class="card-subtitle text-subtext text-xs">
+                                        { formatDate(item.data.startDate) } - { formatDate(item.data.endDate) }
+                                    </div>
+                                </Fragment>
+
+                                <Fragment slot={'content'}>
+                                    <div class="flex flex-col gap-2">
+
+                                        <div class="card-content">
+                                            { item.data.summary }
+                                        </div>
+
+                                        <div class="flex flex-wrap gap-1">
+                                            {item.data.skills.slice(0, 5).map(skill => (
+                                                <span class="badge badge-primary">
+                                                    { skill }
+                                                </span>
+                                            ))}
+
+                                            {item.data.skills.length > 5 &&
+                                                <span class="badge badge-primary">
+                                                    +{ item.data.skills.length - 5 }
+                                                </span>
+                                            }
+                                        </div>
+                                    </div>
+                                </Fragment>
+                            </Card>
+                        ) : <div class="h-full pointer-events-none"></div>}
+                    </div>
+                </div>
+            ))}
+        </div>
     </div>
 </section>
 
 <style>
-.reveal-content {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-@keyframes revealIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .reveal-content {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     }
-}
+
+    @keyframes revealIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Initial state of the card */
+    .scroll-stat {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Revealed state while scrolling*/
+    .scroll-stat.reveal {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 </style>
+
+<script>
+    function revealCards() {
+        const cards = document.querySelectorAll('.scroll-stat');
+
+        const observerOptions: IntersectionObserverInit = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px',
+        };
+
+        const observerCallback: IntersectionObserverCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                // Add a slight delay based on the card's position to create a wave effect
+                const index = Array.from(cards).indexOf(entry.target);
+                // Delay resets every row for a clean staggered look
+                setTimeout(() => {
+                    entry.target.classList.add('reveal');
+                }, (index % 3) * 150);
+
+                observer.unobserve(entry.target);
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        cards.forEach((card) => observer.observe(card));
+    }
+
+    // Runs on initial load
+    revealCards();
+
+    // Necessary for Astro View Transitions if you use them
+    document.addEventListener('astro:after-swap', revealCards);
+</script>

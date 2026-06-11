@@ -1,9 +1,10 @@
 ---
 interface Props {
-    to: string,
-    title: string,
-    description: string,
+    to?: string,
+    title?: string,
+    content?: string,
     subtitle?: Date,
+    divider?: boolean;
     class?: string,
 }
 
@@ -11,7 +12,8 @@ const {
     to,
     title,
     subtitle,
-    description,
+    content,
+    divider,
     class: className,
     ...rest
 } = Astro.props;
@@ -19,18 +21,26 @@ const {
 
 <a href={to} class=`card ${className}` { ...rest }>
     <div class="card-header">
-        <div class="card-title">
-            { title }
-        </div>
-
-        {subtitle &&
-            <div class="card-subtitle text-subtext">
-                { subtitle.toLocaleDateString() }
+        <slot name="header">
+            <div class="card-title">
+                { title }
             </div>
-        }
+
+            {subtitle &&
+                <div class="card-subtitle text-subtext">
+                    { subtitle.toLocaleDateString() }
+                </div>
+            }
+        </slot>
     </div>
 
-    <div class="card-description">
-        { description }
+    {divider &&
+        <div class="h-px bg-linear-to-r from-transparent via-gray-600/50 to-transparent"></div>
+    }
+
+    <div class="card-content">
+        <slot name="content">
+            { content }
+        </slot>
     </div>
 </a>

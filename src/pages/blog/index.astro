@@ -14,7 +14,7 @@ const posts = await getCollection('blog');
                     <Card
                         to=`/${post.collection}/${post.id}`
                         title={post.data.title}
-                        description={post.data.description}
+                        content={post.data.description}
                         subtitle={post.data.date}
                         class="dark gradient border-glow"
                     ></Card>

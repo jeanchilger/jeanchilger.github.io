@@ -27,12 +27,17 @@
         @apply font-heading text-xl;
     }
 
-    .card .card-description {
+    .card .card-content {
         @apply font-body text-sm;
     }
 
     .card.primary {
         @apply bg-primary;
+    }
+
+    .card.outlined {
+        @apply border bg-transparent border-gray-600 backdrop-blur-xs
+                hover:border-gray-400 hover:shadow-lg;
     }
 
     .card.dark {
@@ -47,4 +52,12 @@
 
     /* Timeline */
 
+    /* Badges */
+    .badge {
+        @apply px-2 py-1 rounded text-xs;
+    }
+
+    .badge-primary {
+        @apply border border-primary text-primary bg-accent/10;
+    }
 }

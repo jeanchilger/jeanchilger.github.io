@@ -13,5 +13,17 @@ const blog = defineCollection({
 });
 
 
+const career = defineCollection({
+    loader: file('./src/content/career.json'),
+    schema: z.object({
+        role: z.string(),
+        company: z.string(),
+        startDate: z.coerce.date(),
+        endDate: z.coerce.date(),
+        summary: z.string().optional(),
+        achievments: z.array(z.string()).optional(),
+        skills: z.array(z.string()),
+    }),
+});
 
-export const collections = { blog };
+export const collections = { blog, career };
