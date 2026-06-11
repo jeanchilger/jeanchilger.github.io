@@ -13,7 +13,6 @@
     }
 
     /* Cards */
-
     .card {
         @apply px-2 md:px-6 lg:px-10 py-2 md:py-4 rounded
             flex flex-col gap-2 md:gap-4 lg:gap-6
@@ -45,4 +44,7 @@
         @apply border bg-transparent border-gray-600 backdrop-blur-xs bg-linear-to-tl from-black/50 to-dark/50
                 hover:border-gray-400 hover:-translate-y-0.5 hover:shadow-lg;
     }
+
+    /* Timeline */
+
 }
