@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "role": "Senior Full Stack Engineer",
     "company": "Optidata Cloud",
     "startDate": "2022-11-15",
@@ -32,7 +32,7 @@
     ]
   },
   {
-    "id": "2",
+    "id": 2,
     "role": "Full Stack Engineer",
     "company": "Animati netPACS",
     "startDate": "2022-11-15",
@@ -51,7 +51,7 @@
     ]
   },
   {
-    "id": "3",
+    "id": 3,
     "role": "Computer Vision & Web Engineer",
     "company": "Sanick",
     "startDate": "2020-09-01",
@@ -74,7 +74,7 @@
     ]
   },
   {
-    "id": "4",
+    "id": 4,
     "role": "Full Stack Engineer",
     "company": "Loy Legal",
     "startDate": "2020-06-01",

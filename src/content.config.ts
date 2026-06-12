@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { iconNames } from './lib/icons';
 
 const blog = defineCollection({
     loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
@@ -26,4 +27,13 @@ const career = defineCollection({
     }),
 });
 
-export const collections = { blog, career };
+const contact = defineCollection({
+    loader: file('./src/content/contact.json'),
+    schema: z.object({
+        link: z.string(),
+        label: z.string(),
+        icon: z.enum(iconNames),
+    }),
+});
+
+export const collections = { blog, career, contact };

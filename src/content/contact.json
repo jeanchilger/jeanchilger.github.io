@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "link": "https://www.github.com/jeanchilger",
+    "label": "GitHub",
+    "icon": "github"
+  },
+  {
+    "id": 2,
+    "link": "https://www.linkedin.com/in/jean-hilger",
+    "label": "LinkedIn",
+    "icon": "linkedin"
+  },
+  {
+    "id": 3,
+    "link": "mailto:hilgerjeancarlo@gmail.com",
+    "label": "Email",
+    "icon": "gmail"
+  },
+  {
+    "id": 4,
+    "link": "https://wa.me/5549999233335",
+    "label": "WhatsApp",
+    "icon": "whatsapp"
+  }
+]
