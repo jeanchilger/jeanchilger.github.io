@@ -21,6 +21,6 @@ const variantStyle = {
 }[variant];
 ---
 
-<a href={href} class=`${variantStyle} ${outline && 'bg-transparent'} ${className}` {...rest}>
+<a href={href} class=`flex items-center ${variantStyle} ${outline && 'bg-transparent'} ${className}` {...rest}>
     <slot></slot>
 </a>

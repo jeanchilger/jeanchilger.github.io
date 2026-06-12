@@ -1,6 +1,6 @@
 ---
 import Link from '@/components/ui/Link.astro';
-import { ChevronDown } from '@lucide/astro';
+import { ChevronDown, ExternalLink } from '@lucide/astro';
 ---
 
 <section class="relative h-screen flex flex-col items-center justify-center">
@@ -13,9 +13,9 @@ import { ChevronDown } from '@lucide/astro';
             Engineer committed to developing efficient, scalable, and user-focused software solutions.
         </p>
 
-        <div class="mt-6">
+        <div class="mt-6 flex">
             <Link href="/blog" variant='primary' class="reveal-content me-2" style="animation-delay: 250ms;">
-                Blog
+                Blog <ExternalLink class="ms-2 inline" size="1em"/>
             </Link>
 
             <Link href="#career" variant='primary' outline class="reveal-content" style="animation-delay: 350ms;">
