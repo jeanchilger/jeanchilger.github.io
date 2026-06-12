@@ -1,15 +1,14 @@
 ---
-
 import { icons } from '@/lib/icons';
 import { getCollection } from 'astro:content';
 
 const contactData = await getCollection('contact');
 ---
 
-<section id="contact" class="flex flex-col justify-center section-container">
+<section id="contact" class="flex flex-col justify-center section-container max-sm:px-0">
     <div class="my-20 h-px bg-linear-to-r from-transparent via-gray-600/50 to-transparent"></div>
 
-    <div class="mb-10 text-center">
+    <div class="mb-10 text-center max-sm:px-8">
         <h1 class="text-5xl">
             Let's connect
         </h1>
@@ -18,7 +17,7 @@ const contactData = await getCollection('contact');
         </span>
     </div>
 
-    <div class="flex items-center justify-center gap-3">
+    <div class="flex max-sm:flex-col items-center justify-center gap-2 md:gap-3">
         {contactData.map(contact => {
             const Icon = icons[contact.data.icon];
 
@@ -27,9 +26,12 @@ const contactData = await getCollection('contact');
                     href={contact.data.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="card hover:border-glow outlined cursor-pointer flex flex-row items-center text-blue border-blue text-lg no-underline"
+                    class="card outlined contact-card max-sm:gap-4 max-md:gap-2"
                 >
-                    <Icon class="w-8 fill-blue" /> {contact.data.label}
+                    <Icon class="max-sm:w-6 max-md:w-4 md:w-6 lg:w-8 fill-primary" />
+                    <span class="max-sm:text-lg max-md:text-sm md:text-base lg:text-lg">
+                        {contact.data.label}
+                    </span>
                 </a>
         )})}
     </div>

@@ -58,4 +58,19 @@
     .badge-primary {
         @apply border border-primary text-primary bg-accent/10;
     }
+
+    /* Hero-specific components */
+    .hero-banner {
+        @apply flex flex-col p-12 min-h-50
+                md:p-8 md:w-3xl md:rounded md:border md:border-gray-600
+                md:backdrop-blur-xs md:bg-linear-to-tl md:from-black/50 md:to-dark/50;
+    }
+
+    /* Contact-specific components */
+    .card.contact-card {
+        @apply cursor-pointer flex-row items-center text-primary border-primary
+                text-base md:text-lg max-sm:w-screen max-sm:px-8
+                max-sm:border-0 max-sm:rounded-none
+                max-sm:backdrop-blur-none max-sm:shadow-none max-sm:hover:shadow-none;
+    }
 }
