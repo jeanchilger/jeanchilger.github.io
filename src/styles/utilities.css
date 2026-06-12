@@ -1,4 +1,5 @@
 @layer utilities {
+    /* TODO: Check if this class should be here */
     .border-glow {
         position: relative;
     }

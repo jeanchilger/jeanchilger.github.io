@@ -6,7 +6,7 @@ import { getCollection } from 'astro:content';
 const contactData = await getCollection('contact');
 ---
 
-<section id="contact" class="flex flex-col justify-center scroll-mt-20 px-2 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen">
+<section id="contact" class="flex flex-col justify-center section-container">
     <div class="my-20 h-px bg-linear-to-r from-transparent via-gray-600/50 to-transparent"></div>
 
     <div class="mb-10 text-center">
@@ -27,7 +27,7 @@ const contactData = await getCollection('contact');
                     href={contact.data.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="card outlined cursor-pointer flex flex-row items-center text-blue border-blue text-lg no-underline"
+                    class="card hover:border-glow outlined cursor-pointer flex flex-row items-center text-blue border-blue text-lg no-underline"
                 >
                     <Icon class="w-8 fill-blue" /> {contact.data.label}
                 </a>

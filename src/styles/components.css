@@ -1,6 +1,6 @@
 @layer components {
     .section-container {
-        @apply py-12 md:py-20 px-4 md:px-0;
+        @apply scroll-mt-20 px-2 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen;
     }
 
     .falling-letter {
@@ -49,8 +49,6 @@
         @apply border bg-transparent border-gray-600 backdrop-blur-xs bg-linear-to-tl from-black/50 to-dark/50
                 hover:border-gray-400 hover:-translate-y-0.5 hover:shadow-lg;
     }
-
-    /* Timeline */
 
     /* Badges */
     .badge {
