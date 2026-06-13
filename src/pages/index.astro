@@ -5,9 +5,12 @@ import Hero from '@/components/sections/Hero.astro';
 import Career from '@/components/sections/Career.astro';
 import Blog from '@/components/sections/Blog.astro';
 import Contact from '@/components/sections/Contact.astro';
+
+import { SITE } from '@/config';
+
 ---
 
-<MainLayout title="Jean Carlo Hilger">
+<MainLayout title={SITE.title}>
     <Hero />
     <!-- <Nav /> -->
     <Career />
