@@ -1,0 +1,128 @@
+---
+import '../styles/global.css';
+import Head from '@/components/Head.astro';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+    <head>
+        <Head title={title} />
+    </head>
+
+    <body class="relative min-h-screen overflow-x-hidden antialiased text-maintext">
+        <div data-nav-sentinel aria-hidden="true" class="absolute top-[80vh] h-px w-px pointer-events-none"></div>
+        <div
+            id="matrix-container"
+            class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"
+            style="
+                mask-image: linear-gradient(to bottom, black 0%, black 0%, transparent 100%);
+                -webkit-mask-image: linear-gradient(to bottom, black 0%, black 0%, transparent 100%);
+            "
+        ></div>
+
+        <main class="relative z-0">
+            <slot />
+        </main>
+
+        <button
+            id="to-top"
+            class="fixed bottom-8 right-8 z-50 p-0 rounded-full bg-background border border-accent/10 shadow-2xl transition-all duration-500 translate-y-20 opacity-0 group flex items-center justify-center cursor-pointer"
+            aria-label="Back to top"
+        >
+            <svg class="w-14 h-14 -rotate-90">
+                <circle
+                    cx="28"
+                    cy="28"
+                    r="24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    class="text-accent/5"
+                ></circle>
+                <circle
+                    id="progress-circle"
+                    cx="28"
+                    cy="28"
+                    r="24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-dasharray="150.7"
+                    stroke-dashoffset="150.7"
+                    stroke-linecap="round"
+                    class="text-accent transition-all duration-100"
+                ></circle>
+            </svg>
+
+            <div class="absolute text-accent group-hover:scale-110 transition-transform">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                >
+                    <path d="M13.0001 7.82843V20H11.0001V7.82843L5.63614 13.1924L4.22192 11.7782L12.0001 4L19.7783 11.7782L18.3641 13.1924L13.0001 7.82843Z"></path>
+                </svg>
+            </div>
+        </button>
+
+        <script>
+            import { createAnimatedBackground } from '@/lib/ui';
+
+            createAnimatedBackground();
+
+            const toTopBtn = document.getElementById('to-top');
+            const progressCircle = document.getElementById('progress-circle');
+            const progressCircleDiameter = 48;
+            const circumference = Math.PI * progressCircleDiameter;
+            const arrowIcon = toTopBtn?.querySelector('.absolute');
+
+            function handleScroll() {
+                const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercentage = window.scrollY / scrollHeight;
+
+                const offset = circumference - scrollPercentage * circumference;
+                if (progressCircle) {
+                    progressCircle.style.strokeDashoffset = offset.toString();
+                }
+
+                const shouldShowScrollTopBtn = scrollPercentage > 0.3;
+
+                toTopBtn?.classList.toggle('translate-y-0', shouldShowScrollTopBtn);
+                toTopBtn?.classList.toggle('opacity-100', shouldShowScrollTopBtn);
+                toTopBtn?.classList.toggle('translate-y-20', !shouldShowScrollTopBtn);
+                toTopBtn?.classList.toggle('opacity-0', !shouldShowScrollTopBtn);
+
+                const shouldShowBounceAnimation = scrollPercentage > 0.98;
+                arrowIcon?.classList.toggle('animate-bounce-twice', shouldShowBounceAnimation);
+            }
+
+            window.addEventListener('scroll', handleScroll, { passive: true });
+
+            toTopBtn?.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        </script>
+    </body>
+</html>
+
+<style>
+    body {
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--color-background), black 20%) 0%,
+            var(--color-background) 50%,
+            color-mix(in srgb, var(--color-background), var(--color-accent) 16%) 100%
+        );
+        background-attachment: fixed;
+        min-height: 100vh;
+        transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    }
+</style>

@@ -1,0 +1,30 @@
+---
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+async function fetchAllPosts(): Promise<CollectionEntry<'blog'>[]> {
+    return await getCollection('blog');
+}
+
+export async function getStaticPaths() {
+    const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+    return posts.map(post => ({
+        params: {slug: post.id},
+        props: post
+    }));
+}
+
+const post = Astro.props;
+---
+
+<BlogLayout title={post.data.title}>
+    <div class="p-8">
+        <h1 class="text-4xl">
+            {post.data.title}
+        </h1>
+        <p class="mt-4">
+            {post.data.description}
+        </p>
+    </div>
+</BlogLayout>

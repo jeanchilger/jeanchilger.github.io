@@ -1,0 +1,70 @@
+---
+import { Search } from '@lucide/astro';
+
+type LinkEntry = {
+    href: string;
+    label: string
+};
+interface Props {
+    disableReveal?: boolean;
+    links?: Array<LinkEntry>;
+}
+
+const {
+    disableReveal = false,
+    links,
+} = Astro.props;
+---
+
+<nav
+    data-navbar
+    class:list={[
+        'navbar',
+        'fixed inset-x-0 top-0 z-50',
+        'transition-transform duration-300 ease-out',
+        '-translate-y-full',
+        {
+            'translate-y-0': disableReveal,
+        },
+    ]}
+    data-disable-reveal={disableReveal ? '' : undefined}
+>
+    <div class="flex flex-wrap items-center justify-between px-2 sm:px-12 md:px-14 lg:px-28 max-w-360 py-3">
+        <span></span>
+        <div class="flex gap-3">
+            {links?.map((link: LinkEntry) => (
+                <a href={link.href} class="p-1 hover:text-subtext transition">
+                    {link.label}
+                </a>
+            ))}
+
+            {links && <span class="h-8 border-e border-maintext/20"></span>}
+
+            <button type="button" class="p-1 hover:text-subtext transition cursor-pointer flex items-center">
+                <Search class="inline" size="1.25rem"/>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('astro:page-load', () => {
+        const nav = document.querySelector('[data-navbar]');
+        const sentinel = document.querySelector('[data-nav-sentinel]');
+
+        const shouldUseReveal = !nav?.hasAttribute('data-disable-reveal');
+
+        if (!shouldUseReveal || !nav || !sentinel) {
+            return;
+        }
+        const observer = new IntersectionObserver(([entry]) => {
+            nav.classList.toggle('-translate-y-full', entry.isIntersecting);
+        });
+
+        observer.observe(sentinel);
+
+        document.addEventListener('astro:before-swap', () => {
+            observer.disconnect();
+        }, { once: true });
+    });
+</script>

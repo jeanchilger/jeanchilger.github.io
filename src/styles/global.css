@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import "./utilities.css";
+@import "./animations.css";
+@import "./components.css";
+
+@theme {
+    /* Base Colors - Theme used in @layer base{...} */
+    --color-background: #2e3440;
+    --color-accent: #81a1c1;
+    --color-primary: #81a1c1;
+    --color-maintext: #eceff4;
+    --color-subtext: #b2bed1;
+    --color-textrain: #d8dee9;
+    --color-dark: #262a32;
+    --color-darker: #16181c;
+    --color-blue: #5e81ac;
+
+    /* Fonts */
+    --font-heading: "Libre Baskerville", sans-serif;
+    --font-body: "Libre Baskerville", sans-serif;
+
+    /* Custom animations */
+    --animate-fall: fall linear forwards;
+    --animate-bounce-twice: double-bounce-pause 5.6s ease-in-out infinite;
+}
+
+@layer base {
+    /* Default Theme - Dark */
+    :root,
+    [data-theme="default-dark"] {
+        --color-background: #2e3440;
+        --color-accent: #81a1c1;
+        --color-subtext: #b2bed1;
+        --color-textrain: #d8dee9;
+    }
+
+    /* Default Theme - Light */
+    [data-theme="default-light"] {
+        --color-background: #F5F3FF;
+        --color-accent: #7C3AED;
+        --color-maintext: #1E1B4B;
+        --color-subtext: #4B5563;
+        --color-textrain: #97a7dc;
+    }
+
+    /* Core Element Styles */
+    *::selection {
+        @apply bg-accent text-background;
+    }
+
+    body {
+        @apply font-body antialiased text-maintext;
+    }
+}
+
+/* Custom Scrollbar for a cleaner look */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    background-color: color-mix(in srgb, var(--color-accent), transparent 50%);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--color-accent), transparent 25%);
+}

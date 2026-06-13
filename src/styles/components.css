@@ -1,0 +1,81 @@
+@layer components {
+    .section-container {
+        @apply px-6 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen;
+    }
+
+    .falling-letter {
+        @apply absolute font-heading font-extralight select-none pointer-events-none leading-none;
+        animation: fall linear forwards;
+    }
+
+    .launching {
+        animation: launch 0.5s ease-in forwards;
+    }
+
+    /* Cards */
+    .card {
+        @apply px-2 md:px-6 lg:px-10 py-2 md:py-4 rounded
+            flex flex-col gap-2 md:gap-4 lg:gap-6
+            transition-all;
+    }
+
+    .card .card-header {
+        @apply flex flex-col gap-2
+    }
+
+    .card .card-header .card-title {
+        @apply font-heading text-xl;
+    }
+
+    .card .card-content {
+        @apply font-body text-sm;
+    }
+
+    .card.primary {
+        @apply bg-primary;
+    }
+
+    .card.outlined {
+        @apply border bg-transparent border-gray-600 backdrop-blur-xs
+                hover:border-gray-400 hover:shadow-lg;
+    }
+
+    .card.dark {
+        @apply border bg-darker border-gray-600
+                hover:border-gray-400 hover:-translate-y-0.5 hover:shadow-lg;
+    }
+
+    .card.dark.gradient {
+        @apply border bg-transparent border-gray-600 backdrop-blur-xs bg-linear-to-tl from-black/50 to-dark/50
+                hover:border-gray-400 hover:-translate-y-0.5 hover:shadow-lg;
+    }
+
+    /* Badges */
+    .badge {
+        @apply px-2 py-1 rounded text-xs;
+    }
+
+    .badge-primary {
+        @apply border border-primary text-primary bg-accent/10;
+    }
+
+    /* Hero-specific components */
+    .hero-banner {
+        @apply flex flex-col p-12 min-h-50
+                md:p-8 md:w-3xl md:rounded md:border md:border-gray-600
+                md:backdrop-blur-xs md:bg-linear-to-tl md:from-black/50 md:to-dark/50;
+    }
+
+    /* Contact-specific components */
+    .card.contact-card {
+        @apply cursor-pointer flex-row items-center text-primary border-primary
+                text-base md:text-lg max-sm:w-screen max-sm:px-8
+                max-sm:border-0 max-sm:rounded-none
+                max-sm:backdrop-blur-none max-sm:shadow-none max-sm:hover:shadow-none;
+    }
+
+    /* Navbar */
+    .navbar {
+        @apply bg-background/50 backdrop-blur-md;
+    }
+}

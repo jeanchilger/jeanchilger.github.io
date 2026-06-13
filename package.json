@@ -1,45 +1,21 @@
 {
   "name": "jeanchilger.github.io",
-  "private": true,
-  "description": "Jean Carlo Hilger's website.",
-  "version": "0.1.0",
-  "author": "Jean Carlo Hilger <hilgerjeancarlo@gmail.com>",
-  "license": "0BSD",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "bootstrap": "^5.0.0-beta2",
-    "gatsby": "^2.26.1",
-    "gatsby-plugin-mdx": "^2.1.0",
-    "gatsby-plugin-sass": "^3.2.0",
-    "gatsby-source-filesystem": "^2.11.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0",
-    "react-spring": "^8.0.27",
-    "sass": "^1.32.7"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "prettier": "2.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "@astrojs/mdx": "^6.0.3",
+    "@lucide/astro": "^1.17.0",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.4.5",
+    "tailwindcss": "^4.3.0"
   }
 }

@@ -1,0 +1,96 @@
+[
+  {
+    "id": 1,
+    "role": "Senior Full Stack Engineer",
+    "company": "Optidata Cloud",
+    "startDate": "2022-11-15",
+    "endDate": "2025-12-15",
+    "summary": "Developed and optimized a large-scale microservices platform serving 5,000+ users and 450+ tenants, delivering AI-powered features, performance improvements, and scalable asynchronous architectures. Contributed across the full stack while enhancing platform reliability, testing, developer experience, and deployment workflows.",
+    "achievements": [
+      "Led the adaptation of a multi-tenant microservices platform into a SaaS offering, including Stripe subscription integration, free-trial provisioning, and customer onboarding workflows.",
+      "Optimized high-traffic Laravel/PostgreSQL application flows and introduced Redis caching strategies, reducing average request latency from ~300–500ms to ~100ms across a platform serving 5,000+ users and 450+ tenants.",
+      "Pioneered AI feature integration using OpenAI APIs, delivering meeting transcription, conversation summarization, document generation, and assistant-style chat capabilities.",
+      "Played a key role in the development and evolution of a browser-based videoconferencing platform, contributing across backend services, frontend workflows, recording infrastructure, and production reliability improvements.",
+      "Designed and implemented asynchronous processing workflows using Laravel queues and Redis, improving responsiveness and reducing execution pressure on user-facing requests.",
+      "Introduced platform-wide developer experience improvements including GitHub Actions CI/CD automation, Swagger API documentation, and automated package documentation generation.",
+      "Built shared frontend tooling supporting Vue.js, React, JavaScript, and TypeScript applications, enabling platform-wide migration from Laravel Mix to Vite.",
+      "Conducted technical analysis of E2E testing bottlenecks and delivered the initial Playwright implementation, establishing the foundation for broader automated testing adoption.",
+      "Extended and customized open-source libraries to accelerate feature delivery and remove engineering bottlenecks across internal applications."
+    ],
+    "skills": [
+      "Laravel",
+      "Vue.js",
+      "TypeScript",
+      "React",
+      "Docker",
+      "PHP",
+      "Microservices",
+      "Livewire",
+      "Next.js",
+      "WebRTC",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "id": 2,
+    "role": "Full Stack Engineer",
+    "company": "Animati netPACS",
+    "startDate": "2022-11-15",
+    "endDate": "2022-11-15",
+    "summary":"Optimized complex database workloads, reducing a critical query's execution time from nearly two hours to six minutes. Modernized and refactored a Vue.js application, improving maintainability, performance, and alignment with framework best practices.",
+    "skills": [
+      "Spring",
+      "Java",
+      "JavaScript",
+      "Vue.js",
+      "PostgreSQL"
+    ],
+    "achievements": [
+      "Performed advanced database performance optimizations, working with complex triggers and stored procedures; reduced a critical query execution time from ~2 hours to ~6 minutes.",
+      "Modernized and refactored a mid-sized Vue.js application, aligning it with framework best practices and improving maintainability and frontend performance."
+    ]
+  },
+  {
+    "id": 3,
+    "role": "Computer Vision & Web Engineer",
+    "company": "Sanick",
+    "startDate": "2020-09-01",
+    "endDate": "2021-09-01",
+    "summary":"Developed industrial software and machine learning solutions for manufacturing clients, spanning research, hardware integration, model development, and production deployment. Focused on delivering reliable systems that improved operational efficiency.",
+    "skills": [
+      "Python",
+      "Django",
+      "Machine Learning",
+      "Computer Vision",
+      "OpenCV",
+      "Embedded Systems",
+      "React",
+      "MySQL",
+      "Scikit-learn"
+    ],
+    "achievements": [
+      "Co-led the research and development of a machine-learning-based industrial object counter, aimed at outperforming competing solutions. Owned the initiative end-to-end: literature review, hypothesis testing, prototype design (hardware and illumination), model training/validation, and deployment on low-end hardware.",
+      "Designed, implemented, and deployed an on-site industrial label printing management system, integrating it directly into an existing production line for a manufacturing client."
+    ]
+  },
+  {
+    "id": 4,
+    "role": "Full Stack Engineer",
+    "company": "Loy Legal",
+    "startDate": "2020-06-01",
+    "endDate": "2020-09-01",
+    "summary":"Migrated a legacy Ember.js application from v1 to v3 and collaborated on a major architectural redesign, reducing technical debt and creating a more secure, maintainable foundation for future development.",
+    "skills": [
+      "Node.js",
+      "MongoDB",
+      "Prisma",
+      "TypeScript",
+      "Ember",
+      "JavaScript",
+      "Hapi"
+    ],
+    "achievements": [
+      "Conducted the migration of a legacy Ember.js application (v1 → v3) to address security risks and severe maintainability issues. Re-architected the application alongside the tech lead, significantly improving code quality and enabling faster, safer feature development in a previously brittle system."
+    ]
+  }
+]

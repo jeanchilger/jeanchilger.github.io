@@ -1,0 +1,45 @@
+---
+import Link from '@/components/ui/Link.astro';
+import { ChevronDown, ExternalLink } from '@lucide/astro';
+---
+
+<section class="relative h-screen flex flex-col items-center justify-center">
+    <div class="hero-banner border-glow">
+        <h1 class="text-6xl font-bold text-primary reveal-content" style="animation-delay: 100ms;">
+            Jean Carlo Hilger
+        </h1>
+
+        <p class="mt-6 text-xl reveal-content" style="animation-delay: 200ms;">
+            Engineer committed to developing efficient, scalable, and user-focused software solutions.
+        </p>
+
+        <div class="mt-6 flex">
+            <Link href="/blog" variant='primary' class="reveal-content me-2" style="animation-delay: 250ms;">
+                Blog <ExternalLink class="ms-2 inline" size="1em"/>
+            </Link>
+
+            <Link href="#contact" variant='primary' outline class="reveal-content" style="animation-delay: 350ms;">
+                Contact
+            </Link>
+        </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+        <ChevronDown color="var(--color-accent)" />
+    </div>
+</section>
+
+<style>
+.reveal-content {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: revealIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes revealIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
