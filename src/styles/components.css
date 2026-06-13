@@ -1,6 +1,6 @@
 @layer components {
     .section-container {
-        @apply scroll-mt-20 px-6 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen;
+        @apply px-6 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen;
     }
 
     .falling-letter {

@@ -3,6 +3,7 @@ interface Props {
     href: string;
     variant: 'primary' | 'secondary';
     outline?: boolean;
+    blank?: boolean;
     class?: string;
     style?: string;
 };
@@ -11,6 +12,7 @@ const {
     href,
     variant,
     outline,
+    blank,
     class: className,
     ...rest
 } = Astro.props;
@@ -19,8 +21,18 @@ const variantStyle = {
     'primary': 'bg-primary rounded border-glow border border-primary cursor-pointer px-4 py-1 hover:brightness-80 transition text-decoration-none',
     'secondary': ''
 }[variant];
+
+const targetBlankHtmlAttributes = blank && {
+    'target': '_blank',
+    'rel': 'noopener noreferrer'
+};
 ---
 
-<a href={href} class=`flex items-center ${variantStyle} ${outline && 'bg-transparent'} ${className}` {...rest}>
+<a
+    href={href}
+    class=`flex items-center ${variantStyle} ${outline && 'bg-transparent'} ${className}`
+    {...targetBlankHtmlAttributes}
+    {...rest}
+>
     <slot></slot>
 </a>
