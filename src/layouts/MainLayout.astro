@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Head from '@/components/Head.astro';
 
 interface Props {
     title: string;
@@ -11,18 +12,11 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en" class="scroll-smooth">
     <head>
-        <meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="generator" content={Astro.generator} />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
-
-        <title>{title}</title>
+        <Head title={title} />
     </head>
 
     <body class="relative min-h-screen overflow-x-hidden antialiased text-maintext">
+        <div data-nav-sentinel aria-hidden="true" class="absolute top-[80vh] h-px w-px pointer-events-none"></div>
         <div
             id="matrix-container"
             class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"

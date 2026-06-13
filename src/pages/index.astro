@@ -8,11 +8,25 @@ import Contact from '@/components/sections/Contact.astro';
 
 import { SITE } from '@/config';
 
+const navLinks = [
+    {
+        href: '#career',
+        label: 'Career',
+    },
+    {
+        href: '#blog',
+        label: 'Blog',
+    },
+    {
+        href: '#contact',
+        label: 'Contact',
+    },
+];
 ---
 
 <MainLayout title={SITE.title}>
     <Hero />
-    <!-- <Nav /> -->
+    <Nav links={navLinks}/>
     <Career />
     <!-- <Blog /> -->
     <Contact />

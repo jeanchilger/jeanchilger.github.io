@@ -73,4 +73,9 @@
                 max-sm:border-0 max-sm:rounded-none
                 max-sm:backdrop-blur-none max-sm:shadow-none max-sm:hover:shadow-none;
     }
+
+    /* Navbar */
+    .navbar {
+        @apply bg-background/50 backdrop-blur-md;
+    }
 }
