@@ -12,7 +12,7 @@ function formatDate(date: Date) {
 }
 ---
 
-<section id="career" class="mt-30 section-container">
+<section id="career" class="scroll-mt-20 mt-30 section-container">
     <div class="mb-10">
         <h1 class="text-5xl scroll-stat">
             Career
@@ -132,14 +132,12 @@ function formatDate(date: Date) {
         }
     }
 
-    /* Initial state of the card */
     .scroll-stat {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
         transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    /* Revealed state while scrolling*/
     .scroll-stat.reveal {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -161,9 +159,7 @@ function formatDate(date: Date) {
                     return;
                 }
 
-                // Add a slight delay based on the card's position to create a wave effect
                 const index = Array.from(cards).indexOf(entry.target);
-                // Delay resets every row for a clean staggered look
                 setTimeout(() => {
                     entry.target.classList.add('reveal');
                 }, (index % 3) * 150);
@@ -177,9 +173,7 @@ function formatDate(date: Date) {
         cards.forEach((card) => observer.observe(card));
     }
 
-    // Runs on initial load
     revealCards();
 
-    // Necessary for Astro View Transitions if you use them
     document.addEventListener('astro:after-swap', revealCards);
 </script>
