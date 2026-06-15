@@ -1,0 +1,113 @@
+---
+interface HeadingItem {
+    slug: string;
+    depth: number;
+    text: string;
+}
+
+interface Props {
+    headings: HeadingItem[];
+}
+
+const { headings } = Astro.props;
+const tocItems = headings.filter(({ depth }) => depth >= 2);
+const getIndent = (depth: number) => `${Math.max(0, depth - 2) * 1.25}rem`;
+---
+
+{tocItems.length > 0 && (
+    <>
+        <details class="blog-toc mb-8 rounded border border-gray-700 bg-dark/80 p-4 text-sm text-subtext xl:hidden">
+            <summary class="cursor-pointer text-sm font-semibold uppercase tracking-[0.3em] text-subtext/70">
+                On this page
+            </summary>
+            <nav aria-label="Table of contents" class="mt-4">
+                <ul class="space-y-2">
+                    {tocItems.map(item => (
+                        <li class="transition-all" style={`margin-left: ${getIndent(item.depth)}`}>
+                            <a href={`#${item.slug}`} class="block px-2 py-2 text-subtext transition hover:text-maintext focus:outline-none focus:ring-2 focus:ring-accent" data-toc-link>
+                                {item.text}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </details>
+
+        <aside class="blog-toc sticky top-24 hidden min-w-[240px] shrink-0 self-start xl:block">
+            <div class="rounded border border-gray-700 bg-dark/80 p-5 text-sm text-subtext">
+                <div class="mb-4 text-xs uppercase tracking-[0.3em] text-subtext/70">On this page</div>
+                <nav aria-label="Table of contents">
+                    <ul class="space-y-2">
+                        {tocItems.map(item => (
+                            <li class="transition-all" style={`margin-left: ${getIndent(item.depth)}`}>
+                                <a href={`#${item.slug}`} class="block px-2 py-2" data-toc-link>
+                                    {item.text}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+    </>
+)}
+
+<script is:inline>
+    const tocLinks = Array.from(document.querySelectorAll('.blog-toc a[data-toc-link]'));
+    const headingElements = Array.from(document.querySelectorAll('article h2, article h3, article h4, article h5, article h6'));
+
+    const setActiveLink = (id) => {
+        tocLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('text-maintext', isActive);
+            link.classList.toggle('font-semibold', isActive);
+            link.setAttribute('aria-current', isActive ? 'location' : 'false');
+        });
+    };
+
+    const getVisibleHeading = () => {
+        const visibleHeadings = headingElements.filter(el => el.dataset.intersecting === 'true');
+
+        return visibleHeadings[0];
+    };
+
+    const setActiveLinkFromHash = () => {
+        const hash = window.location.hash.slice(1);
+        if (hash) {
+            setActiveLink(hash);
+        }
+    };
+
+    const attachLinkHandlers = () => {
+        tocLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const targetId = link.getAttribute('href')?.slice(1);
+                if (targetId) {
+                    setActiveLink(targetId);
+                }
+            });
+        });
+    };
+
+    if (tocLinks.length > 0 && headingElements.length > 0) {
+        const intersectionObserverCallback = (entries) => {
+            entries.forEach(entry => {
+                entry.target.dataset.intersecting = entry.isIntersecting ? 'true' : 'false';
+            });
+
+            const heading = getVisibleHeading();
+            setActiveLink(heading.id);
+        };
+
+        const intersectionObserverOptions = {
+            rootMargin: '0px 0px -70% 0px',
+            threshold: [0.1, 0.25, 0.5],
+        };
+
+        const observer = new IntersectionObserver(intersectionObserverCallback, intersectionObserverOptions);
+
+        headingElements.forEach(element => observer.observe(element));
+        attachLinkHandlers();
+        setActiveLinkFromHash();
+    }
+</script>

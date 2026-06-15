@@ -7,11 +7,13 @@ type LinkEntry = {
 };
 interface Props {
     disableReveal?: boolean;
+    withSearch?: boolean;
     links?: Array<LinkEntry>;
 }
 
 const {
     disableReveal = false,
+    withSearch = false,
     links,
 } = Astro.props;
 ---
@@ -38,11 +40,13 @@ const {
                 </a>
             ))}
 
-            {links && <span class="h-8 border-e border-maintext/20"></span>}
+            {links && withSearch && <span class="h-8 border-e border-maintext/20"></span>}
 
-            <button type="button" class="p-1 hover:text-subtext transition cursor-pointer flex items-center">
-                <Search class="inline" size="1.25rem"/>
-            </button>
+            {withSearch &&
+                <button type="button" class="p-1 hover:text-subtext transition cursor-pointer flex items-center">
+                    <Search class="inline" size="1.25rem"/>
+                </button>
+            }
         </div>
     </div>
 </nav>
@@ -53,7 +57,6 @@ const {
         const sentinel = document.querySelector('[data-nav-sentinel]');
 
         const shouldUseReveal = !nav?.hasAttribute('data-disable-reveal');
-
         if (!shouldUseReveal || !nav || !sentinel) {
             return;
         }
