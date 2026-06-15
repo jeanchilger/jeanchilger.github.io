@@ -1,20 +1,58 @@
 ---
+import { ANALYTICS } from "@/config";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
     title: string;
+    description?: string;
+    canonical?: string;
+    image?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, canonical, image } = Astro.props;
+const pageDescription = description ?? 'Jean Carlo Hilger blog post';
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
 
+<meta name="description" content={pageDescription} />
+{canonical && <link rel="canonical" href={canonical} />}
+<meta property="og:type" content="article" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={pageDescription} />
+{image && <meta property="og:image" content={image} />}
+<meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={pageDescription} />
+{image && <meta name="twitter:image" content={image} />}
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+{ANALYTICS.google.id && (
+    <>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    </>
+)}
+
+{ANALYTICS.google.id && (
+    <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.google.id}`}></script>
+        <script is:inline define:vars={{ gaId: ANALYTICS.google.id }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', gaId);
+        </script>
+    </>
+)}
 
 <title>{title}</title>
 

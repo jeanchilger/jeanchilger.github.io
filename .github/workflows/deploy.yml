@@ -18,6 +18,10 @@ jobs:
         uses: actions/checkout@v6
       - name: Install, build, and upload your site
         uses: withastro/action@v6
+        with:
+          package-manager: bun
+        env:
+          PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.PUBLIC_GOOGLE_ANALYTICS_ID }}
 
   deploy:
     needs: build

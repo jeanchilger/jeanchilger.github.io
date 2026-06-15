@@ -12,7 +12,7 @@
         animation: launch 0.5s ease-in forwards;
     }
 
-    /* Cards */
+    /* #region MARK: Cards */
     .card {
         @apply px-2 md:px-6 lg:px-10 py-2 md:py-4 rounded
             flex flex-col gap-2 md:gap-4 lg:gap-6
@@ -50,7 +50,9 @@
                 hover:border-gray-400 hover:-translate-y-0.5 hover:shadow-lg;
     }
 
-    /* Badges */
+    /* #endregion */
+
+    /* #region MARK: Badges */
     .badge {
         @apply px-2 py-1 rounded text-xs;
     }
@@ -58,24 +60,111 @@
     .badge-primary {
         @apply border border-primary text-primary bg-accent/10;
     }
+    /* #endregion */
 
-    /* Hero-specific components */
+    /* #region MARK: Hero-specific components */
     .hero-banner {
         @apply flex flex-col p-12 min-h-50
                 md:p-8 md:w-3xl md:rounded md:border md:border-gray-600
                 md:backdrop-blur-xs md:bg-linear-to-tl md:from-black/50 md:to-dark/50;
     }
+    /* #endregion */
 
-    /* Contact-specific components */
+
+    /* #region MARK: Blog page */
+    .blog-header-section {
+        @apply relative overflow-hidden bg-dark py-16;
+    }
+
+    .blog-header-background {
+        @apply absolute inset-0 overflow-hidden;
+    }
+
+    .blog-header-overlay {
+        @apply absolute inset-0 bg-darker/50;
+    }
+
+    .blog-content {
+        @apply max-w-none text-maintext;
+    }
+
+    .blog-content h2 {
+        @apply not-first:mt-10 mb-6 scroll-mt-24 text-3xl font-semibold text-maintext;
+    }
+
+    .blog-content h3 {
+        @apply not-first:mt-8 mb-4 scroll-mt-24 text-2xl font-semibold text-maintext;
+    }
+
+    .blog-content h4 {
+        @apply not-first:mt-6 mb-4 scroll-mt-24 text-xl font-semibold text-maintext;
+    }
+
+    .blog-content h5 {
+        @apply not-first:mt-5 mb-2 scroll-mt-24 text-lg font-semibold text-maintext;
+    }
+
+    .blog-content h6 {
+        @apply not-first:mt-4 mb-2 scroll-mt-24 text-base font-semibold text-maintext;
+    }
+
+    .blog-content p {
+        @apply leading-8 text-subtext;
+    }
+
+    .blog-content ul,
+    .blog-content ol {
+        @apply mt-6 ml-6 list-disc text-subtext;
+    }
+
+    .blog-content blockquote {
+        @apply border-l-2 border-accent/30 pl-6 italic text-subtext/90;
+    }
+
+    .blog-content table {
+        @apply w-full overflow-x-auto border-collapse border border-gray-700;
+    }
+
+    .blog-content th,
+    .blog-content td {
+        @apply border border-gray-700 px-4 py-3 text-left text-sm text-subtext;
+    }
+
+    .blog-content img {
+        @apply my-8 w-full rounded-3xl border border-gray-700 object-cover;
+    }
+
+    .blog-banner {
+        @apply px-6 sm:px-12 md:px-14 lg:px-28 max-w-360 mx-auto min-h-screen mb-10
+                overflow-hidden rounded-3xl border border-gray-700 bg-dark;
+    }
+
+    .blog-toc {
+        @apply hidden xl:block;
+    }
+
+    .blog-toc nav a {
+        @apply text-subtext transition hover:text-maintext
+                underline decoration-transparent underline-offset-6 hover:decoration-inherit;
+    }
+
+    .blog-toc nav a[aria-current="location"] {
+        @apply text-maintext font-semibold;
+    }
+    /* #endregion */
+
+    /* #region MARK: Contact-specific components */
     .card.contact-card {
         @apply cursor-pointer flex-row items-center text-primary border-primary
                 text-base md:text-lg max-sm:w-screen max-sm:px-8
                 max-sm:border-0 max-sm:rounded-none
                 max-sm:backdrop-blur-none max-sm:shadow-none max-sm:hover:shadow-none;
     }
+    /* #endregion */
 
-    /* Navbar */
+    /* #region MARK: Navbar */
     .navbar {
         @apply bg-background/50 backdrop-blur-md;
     }
+    /* #endregion */
 }

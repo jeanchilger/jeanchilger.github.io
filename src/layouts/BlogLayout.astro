@@ -4,15 +4,18 @@ import Head from '@/components/Head.astro';
 
 interface Props {
     title: string;
+    description?: string;
+    canonical?: string;
+    image?: string;
 }
 
-const { title } = Astro.props;
+const { title, description, canonical, image } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
     <head>
-        <Head title={title} />
+        <Head title={title} description={description} canonical={canonical} image={image} />
     </head>
 
     <body class="relative min-h-screen overflow-x-hidden antialiased bg-dark">

@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+
+type BannerSource = string | Record<string, any>;
+
+interface Props {
+    banner?: BannerSource;
+    alt?: string;
+}
+
+const { banner, alt = '' } = Astro.props;
+const isMetadata = typeof banner === 'object' && banner !== null;
+---
+
+<div class="h-full w-full overflow-hidden rounded-3xl">
+    {banner && isMetadata ? (
+        <Image
+            src={banner as ImageMetadata}
+            alt={alt}
+            sizes="100vw"
+            class="h-full w-full object-cover"
+            loading="lazy"
+        />
+    ) : banner ? (
+        <img
+            src={banner as string}
+            alt={alt}
+            class="h-full w-full object-cover"
+            loading="lazy"
+        />
+    ) : null}
+</div>

@@ -1,30 +1,67 @@
 ---
-import BlogLayout from "@/layouts/BlogLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
-
-async function fetchAllPosts(): Promise<CollectionEntry<'blog'>[]> {
-    return await getCollection('blog');
-}
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import BlogHeader from '@/components/blog/BlogHeader.astro';
+import BlogTOC from '@/components/blog/BlogTOC.astro';
+import { estimateReadingTime } from '@/lib/reading-time';
+import { SITE } from '@/config';
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
 
 export async function getStaticPaths() {
     const posts: CollectionEntry<'blog'>[] = await getCollection('blog');
 
     return posts.map(post => ({
-        params: {slug: post.id},
-        props: post
+        params: { slug: post.id },
     }));
 }
 
-const post = Astro.props;
+const routeParams = Astro.params as { slug: string | string[] };
+const slug = Array.isArray(routeParams.slug) ? routeParams.slug[0] : routeParams.slug;
+const post = (await getEntry('blog', slug)) as CollectionEntry<'blog'>;
+const { Content, headings = [] } = await render(post);
+
+const formatDate = (value?: string | Date) => {
+    if (!value) {
+        return undefined;
+    }
+
+    const date = value instanceof Date ? value : new Date(value);
+
+    return new Intl.DateTimeFormat('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    }).format(date);
+};
+
+const readingTime = post.data.readingTime === false ? undefined : estimateReadingTime(String(post.body));
+const showToc = post.data.toc !== false && headings.filter(h => h.depth === 2 || h.depth === 3).length >= 2;
+const canonical = `${SITE.href.replace(/\/$/, '')}/blog/${post.id}`;
+const ogImage = typeof post.data.banner === 'string' ? post.data.banner : undefined;
+
 ---
 
-<BlogLayout title={post.data.title}>
-    <div class="p-8">
-        <h1 class="text-4xl">
-            {post.data.title}
-        </h1>
-        <p class="mt-4">
-            {post.data.description}
-        </p>
-    </div>
+<BlogLayout
+    title={post.data.title}
+    description={post.data.description}
+    canonical={canonical}
+    image={ogImage}
+>
+    <BlogHeader
+        title={post.data.title}
+        description={post.data.description}
+        date={formatDate(post.data.date)}
+        updatedDate={formatDate(post.data.updatedDate)}
+        readingTime={readingTime}
+        tags={post.data.tags}
+        banner={post.data.banner}
+        bannerAlt={post.data.bannerAlt ?? ''}
+    />
+
+    <section class="section-container min-h-0 grid gap-10 xl:grid-cols-[minmax(0,1fr)_280px] xl:items-start mb-20 md:mb-30">
+        <article class="blog-content">
+            <Content />
+        </article>
+
+        {showToc && <BlogTOC headings={headings} />}
+    </section>
 </BlogLayout>
