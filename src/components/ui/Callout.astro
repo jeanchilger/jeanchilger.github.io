@@ -1,0 +1,25 @@
+---
+interface Props {
+    type?: 'info' | 'warning' | 'success' | 'error';
+    class?: string;
+}
+
+const { type = 'info', class: className } = Astro.props;
+
+const variantClasses = {
+    info: 'border-blue-400/20 bg-blue-400/10 text-blue-200',
+    warning: 'border-yellow-400/20 bg-yellow-400/10 text-yellow-200',
+    success: 'border-green-400/20 bg-green-400/10 text-green-200',
+    error: 'border-rose-400/20 bg-rose-400/10 text-rose-200',
+}[type];
+---
+
+<aside
+    role="note"
+    class={`rounded border p-5 text-sm leading-7 ${variantClasses} ${className ?? ''}`}
+>
+    <div class="mb-3 font-semibold">{type.toUpperCase()}</div>
+    <div class="space-y-4">
+        <slot />
+    </div>
+</aside>
