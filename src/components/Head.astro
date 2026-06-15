@@ -1,4 +1,5 @@
 ---
+import { ANALYTICS } from "@/config";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -16,6 +17,29 @@ const { title } = Astro.props;
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
+{ANALYTICS.google.id && (
+    <>
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    </>
+)}
+
+{ANALYTICS.google.id && (
+    <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.google.id}`}></script>
+        <script is:inline define:vars={{ gaId: ANALYTICS.google.id }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', gaId);
+        </script>
+    </>
+)}
+
 <title>{title}</title>
+
 
 <ClientRouter />
