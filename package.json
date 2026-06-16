@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "blog:new": "bun ./scripts/create-blog-post.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.3",
@@ -20,5 +21,8 @@
     "astro": "^6.4.5",
     "astro-expressive-code": "^0.43.1",
     "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3"
   }
 }

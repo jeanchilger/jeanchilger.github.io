@@ -42,13 +42,13 @@ const ogImage = typeof post.data.banner === 'string' ? post.data.banner : undefi
 
 <BlogLayout
     title={post.data.title}
-    description={post.data.description}
+    description={post.data.summary}
     canonical={canonical}
     image={ogImage}
 >
     <BlogHeader
         title={post.data.title}
-        description={post.data.description}
+        summary={post.data.summary}
         date={formatDate(post.data.date)}
         updatedDate={formatDate(post.data.updatedDate)}
         readingTime={readingTime}

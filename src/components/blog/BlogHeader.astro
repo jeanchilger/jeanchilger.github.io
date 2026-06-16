@@ -3,7 +3,7 @@ import Banner from './Banner.astro';
 
 interface Props {
     title: string;
-    description?: string;
+    summary?: string;
     date?: string;
     updatedDate?: string;
     readingTime?: string;
@@ -14,7 +14,7 @@ interface Props {
 
 const {
     title,
-    description,
+    summary,
     date,
     updatedDate,
     readingTime,
@@ -40,9 +40,9 @@ const {
                 {title}
             </h1>
 
-            {description && (
+            {summary && (
                 <p class="mt-5 max-w-2xl text-base leading-8 text-subtext sm:text-lg">
-                    {description}
+                    {summary}
                 </p>
             )}
 

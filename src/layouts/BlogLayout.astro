@@ -15,7 +15,12 @@ const { title, description, canonical, image } = Astro.props;
 <!doctype html>
 <html lang="en" class="scroll-smooth">
     <head>
-        <Head title={title} description={description} canonical={canonical} image={image} />
+        <Head
+            title={title}
+            description={description}
+            canonical={canonical}
+            image={image}
+        />
     </head>
 
     <body class="relative min-h-screen overflow-x-hidden antialiased bg-dark">
