@@ -49,6 +49,7 @@ const ogImage = typeof post.data.banner === 'string' ? post.data.banner : undefi
     <BlogHeader
         title={post.data.title}
         summary={post.data.summary}
+        category={post.data.category}
         date={formatDate(post.data.date)}
         updatedDate={formatDate(post.data.updatedDate)}
         readingTime={readingTime}

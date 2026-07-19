@@ -10,9 +10,21 @@ interface Props {
 
 const { banner, alt = '' } = Astro.props;
 const isMetadata = typeof banner === 'object' && banner !== null;
+
+function resolveImagePath(name: string) {
+    if (!name) {
+        return name;
+    }
+
+    if (name.startsWith('http') || name.startsWith('/')) {
+        return name;
+    }
+
+    return `/static/images/${name}`;
+}
 ---
 
-<div class="h-full w-full overflow-hidden rounded-3xl">
+<div class="h-full w-full overflow-hidden">
     {banner && isMetadata ? (
         <Image
             src={banner as ImageMetadata}
@@ -23,7 +35,7 @@ const isMetadata = typeof banner === 'object' && banner !== null;
         />
     ) : banner ? (
         <img
-            src={banner as string}
+            src={resolveImagePath(banner)}
             alt={alt}
             class="h-full w-full object-cover"
             loading="lazy"

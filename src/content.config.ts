@@ -2,12 +2,14 @@ import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
 import { z } from 'astro/zod';
 import { iconNames } from './lib/icons';
+import { BlogPostCategory } from './types';
 
 const blog = defineCollection({
     loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
     schema: z.object({
         title: z.string(),
         summary: z.string().optional(),
+        category: z.enum(Object.values(BlogPostCategory)).optional(),
         date: z.coerce.date(),
         updatedDate: z.coerce.date().optional(),
         tags: z.array(z.string()).optional(),

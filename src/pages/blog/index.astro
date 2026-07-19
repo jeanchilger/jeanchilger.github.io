@@ -17,7 +17,7 @@ const posts = await getCollection('blog');
                     <Card
                         to=`/${post.collection}/${post.id}`
                         title={post.data.title}
-                        content={post.data.description}
+                        content={post.data.summary}
                         subtitle={post.data.date}
                         class="hover:bg-darker/20"
                     ></Card>
